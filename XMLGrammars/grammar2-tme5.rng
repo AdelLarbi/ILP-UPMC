@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <include href="grammar2rngrng"/>
+  <define name="expression" combine="choice">
+    <ref name="labelledLoop"/>
+  </define>
+  <define name="labelledLoop">
+    <element name="labelledLoop">
+      <optional>
+        <attribute name="label">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <element name="condition">
+        <ref name="expression"/>
+      </element>
+      <element name="body">
+        <oneOrMore>
+          <ref name="expression"/>
+        </oneOrMore>
+      </element>
+    </element>
+  </define>
+  <define name="expression" combine="choice">
+    <ref name="continue"/>
+  </define>
+  <define name="expression" combine="choice">
+    <ref name="break"/>
+  </define>
+  <define name="continue">
+    <element name="continue">
+      <optional>
+        <attribute name="label">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <empty/>
+    </element>
+  </define>
+  <define name="break">
+    <element name="break">
+      <optional>
+        <attribute name="label">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <empty/>
+    </element>
+  </define>
+</grammar>

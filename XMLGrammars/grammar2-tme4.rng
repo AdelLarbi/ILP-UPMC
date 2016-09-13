@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <include href="grammar2rngrng"/>
+  <define name="expression" combine="choice">
+    <ref name="unless"/>
+  </define>
+  <define name="unless">
+    <element name="unless">
+      <element name="condition">
+        <ref name="expression"/>
+      </element>
+      <element name="body">
+        <oneOrMore>
+          <ref name="expression"/>
+        </oneOrMore>
+      </element>
+    </element>
+  </define>
+</grammar>

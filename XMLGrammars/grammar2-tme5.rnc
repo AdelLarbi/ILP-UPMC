@@ -1,0 +1,20 @@
+include "grammar2rngrng.rnc"
+expression |= labelledLoop
+labelledLoop =
+  element labelledLoop {
+    attribute label { xsd:string }?,
+    element condition { expression },
+    element body { expression+ }
+  }
+expression |= continue
+expression |= break
+continue =
+  element continue {
+    attribute label { xsd:string }?,
+    empty
+  }
+break =
+  element break {
+    attribute label { xsd:string }?,
+    empty
+  }
